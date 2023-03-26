@@ -2,6 +2,8 @@ package com.yupi.autoreply.api.openai;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.json.JSONUtil;
+import com.yupi.autoreply.api.openai.model.CreateCompletion3Request;
+import com.yupi.autoreply.api.openai.model.CreateCompletion3Response;
 import com.yupi.autoreply.api.openai.model.CreateCompletionRequest;
 import com.yupi.autoreply.api.openai.model.CreateCompletionResponse;
 import com.yupi.autoreply.common.ErrorCode;
@@ -32,7 +34,7 @@ public class OpenAiApi {
         if (StringUtils.isBlank(openAiApiKey)) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "未传 openAiApiKey");
         }
-        String url = "https://api.openai.com/v1/chat/completions";
+        String url = "https://api.openai.com/v1/completions";
         String json = JSONUtil.toJsonStr(request);
         String result = HttpRequest.post(url)
                 .header("Authorization", "Bearer " + openAiApiKey)
@@ -41,5 +43,20 @@ public class OpenAiApi {
                 .body();
         log.info("openAPI response:{}", result);
         return JSONUtil.toBean(result, CreateCompletionResponse.class);
+    }
+
+    public CreateCompletion3Response createCompletion3(CreateCompletion3Request request, String openAiApiKey) {
+        if (StringUtils.isBlank(openAiApiKey)) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "未传 openAiApiKey");
+        }
+        String url = "https://api.openai.com/v1/chat/completions";
+        String json = JSONUtil.toJsonStr(request);
+        String result = HttpRequest.post(url)
+                .header("Authorization", "Bearer " + openAiApiKey)
+                .body(json)
+                .execute()
+                .body();
+        log.info("openAPI response:{}", result);
+        return JSONUtil.toBean(result, CreateCompletion3Response.class);
     }
 }

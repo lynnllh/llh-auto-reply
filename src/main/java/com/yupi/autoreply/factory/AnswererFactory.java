@@ -3,6 +3,7 @@ package com.yupi.autoreply.factory;
 import com.yupi.autoreply.answerer.Answerer;
 import com.yupi.autoreply.answerer.DefaultAnswerer;
 import com.yupi.autoreply.answerer.OpenAiAnswerer;
+import com.yupi.autoreply.answerer.OpenApi3Answerer;
 
 /**
  * 回答者工厂
@@ -21,7 +22,7 @@ public class AnswererFactory {
     public static Answerer createAnswerer(String answerer) {
         switch (answerer) {
             case "openai":
-                return new OpenAiAnswerer();
+                return new OpenApi3Answerer();
             default:
                 return new DefaultAnswerer();
         }
