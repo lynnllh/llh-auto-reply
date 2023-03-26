@@ -13,13 +13,13 @@ server:
 # openAI 配置
 # https://platform.openai.com/docs/api-reference
 openai:
-  model: ${OPENAI_MODEL:text-davinci-003}
+  model: ${OPENAI_MODEL:gpt-3.5-turbo}
   apiKey: ${OPENAI_API_KEY:你的apiKey}
 # 知识星球配置
 # https://zsxq.com/
 zsxq:
-  cookie: ${ZSXQ_COOKIE:你的星球cookie}
-  groupId: ${ZSXQ_GROUP_ID:你的星球id}
+  cookie: ${ZSXQ_COOKIE:zsxq_access_token=09130B66-84D7-BF9C-669C-1A5476CD6E3A_3E4B68B846CB3BF5; zsxqsessionid=dd4b38c6fc8bb1e55c33e0cfb1b590f3; abtest_env=product}
+  groupId: ${ZSXQ_GROUP_ID:15552545855482}
   # 是否提醒提问者
   silenced: ${ZSXQ_SILENCED:true}
 # 任务配置
