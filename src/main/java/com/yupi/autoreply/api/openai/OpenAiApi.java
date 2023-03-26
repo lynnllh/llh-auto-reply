@@ -41,7 +41,6 @@ public class OpenAiApi {
                 .body(json)
                 .execute()
                 .body();
-        log.info("openAPI response:{}", result);
         return JSONUtil.toBean(result, CreateCompletionResponse.class);
     }
 
@@ -56,7 +55,6 @@ public class OpenAiApi {
                 .body(json)
                 .execute()
                 .body();
-        log.info("openAPI response:{}", result);
         return JSONUtil.toBean(result, CreateCompletion3Response.class);
     }
 }
